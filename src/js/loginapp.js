@@ -1,5 +1,5 @@
-
 App = {
+
     web3Provider: null,
     contracts: {},
 
@@ -31,23 +31,17 @@ App = {
     },
 
     bindEvents: function() {
-
-        $(document).on('click','.btn-register',App.registerProduct);
+        console.log('binded');
+        $(document).on('click','.btn-register',App.loginUser);
     },
 
-    registerProduct: function(event) {
+    loginUser: function(event) {
         event.preventDefault();
-
+        console.log('hi');
         var productInstance;
 
-        var productId = document.getElementById('productId').value;
-        var pOwner = document.getElementById('pOwner').value;  
-        var options = {
-            text: productId
-        };
-        
-        // Create QRCode Object
-        
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
         
         web3.eth.getAccounts(function(error,accounts){
 
@@ -60,32 +54,28 @@ App = {
 
             App.contracts.product.deployed().then(function(instance){
                 productInstance=instance;
-                return productInstance.setProduct(web3.fromAscii(productId),web3.fromAscii(pOwner),{from:account});
+                return productInstance.loginUser(web3.fromAscii(username),web3.fromAscii(password),{from:account});
             }).then(function(result){
                 console.log(result);
-
-                var typeNumber = 4;  
-                var errorCorrectionLevel = 'L';  
-                var qr = qrcode(typeNumber, errorCorrectionLevel);  
-                var inputText = productId;  
-                qr.addData(inputText);  
-                qr.make();  
-                document.getElementById('qrcode').innerHTML = qr.createImgTag();  
-                
+                if(result==true) {
+                    window.location.assign('dashboard.html')
+                } else{
+                    document.getElementById('error').innerHTML='Invalid Credentials';
+                }
                 // window.location.reload();
-                document.getElementById('productId').innerHTML='';
-                document.getElementById('pOwner').innerHTML='';
+                document.getElementById('username').innerHTML='';
+                document.getElementById('password').innerHTML='';
 
             }).catch(function(err){
                 console.log(err.message);
             });
         });
     }
-};
+}
 
 $(function() {
 
-    $(window).load(function() {
+    $(window).on('load',function() {
         App.init();
     })
 })

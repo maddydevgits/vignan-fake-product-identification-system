@@ -23,6 +23,7 @@
   "homepage": "https://github.com/maddydevgits/vignan-fake-product-identification-system.git#readme",
   "devDependencies": {
     "lite-server": "^2.6.1",
-    "html5-qrcode": "^2.2.0"
+    "html5-qrcode": "^2.2.0",
+    "qrcode":"1.5.1"
   }
 }

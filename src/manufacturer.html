@@ -7,7 +7,11 @@
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
-
+	<style>
+		canvas {  
+width:200px;  
+  }  
+	</style>
 	</head>
 	<body>
 	<section class="ftco-section">
@@ -48,10 +52,11 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav m-auto">
-	        	<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+	        	<li class="nav-item"><a href="dashboard.html" class="nav-link">Home</a></li>
 			  	<li class="nav-item active"><a href="manufacturer.html" class="nav-link">Manufacturers</a></li>
 	        	<li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
 	          	<li class="nav-item"><a href="sellproduct.html" class="nav-link">Sell Product</a></li>
+				<li class="nav-item"><a href="index.html" class="nav-link">Logout</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -74,16 +79,24 @@
               </div>
               
               <button type="submit" class="btn btn-warning btn-register" id="register">Tag the Product</button>
-          </div>
+        </div>
+		<center>
+			<div id="qrcode"></div>
+		</center>
+		  
     </section>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"> </script>  
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.1/qrcode.js"> </script>  
   <script src="js/popper.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/web3.min.js"></script>
   <script src="js/truffle-contract.js"></script>
+  
   <script src="js/app.js"></script>
+  
   </body>
 </html>
 
